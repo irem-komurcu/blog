@@ -1,5 +1,5 @@
 <!-- Navbar Start -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="banner">
+<nav class="navbar navbar-default navbar-fixed-top" role="banner">
     <div class="container">
 
         <div class="navbar-header">
@@ -13,29 +13,33 @@
             </button>
 
             <!-- İsim Soyisim veya Marka İsmi -->
-            <a href="{% url 'home' %}" class="navbar-brand">Personel Development Blog</a>
-        </div>
+            <a href="{% url 'home' %}" class="navbar-default" style="color: #383838"><h2><b>İrem KÖMÜRCÜ</b></h2><h6>Personal Development Blog</h6></a>
+        </div><br>
 
         <nav class="collapse navbar-collapse" role="navigation">
 
             <!-- Arama Çubuğu -->
-            <form class="navbar-form navbar-left" role="search" method="GET" action="">
+            <form class="navbar-form navbar-right" role="search" method="GET" action="">
                 <div class="input-group">
-                    <input class="form-control" type="text" name="q" placeholder="Search on blog" value="" >
+                    <input class="form-control" type="text" name="q" placeholder="Search on blog" value="{{ request.GET.q }}" >
                     <span class="input-group-btn">
-                        <input class="btn btn-default" type="submit" value="Ara">
+                       <b> <input class="btn btn-default" style="color:black;" type="submit" value="Search"></b>
                     </span>
                 </div>
             </form>
 
             <!-- Temel Sayfalar -->
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'post:create' %}">New Story</a></li>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'post:index' %}">Blog</a></li>
-                <li><a href="#">...</a></li>
-                <li><a href="#">...</a></li>
+            <ul class="nav navbar-nav" style="padding-left: 250px; font-size: 16px; font-family:'Lucida Grande';">
+                {% if request.user.is_authenticated %}
+
+                    <li><a href="{% url 'post:create' %}"><b>New Story</b></a></li>
+                {% endif %}
+                <li><a href="{% url 'about' %}"><b>Who Am I</b></a></li>
+                <li><a href="{% url 'home' %}"><b>Home/Blog</b></a></li>
+                <!--   <li><a href="#">...</a></li>    -->
+
             </ul>
+
 
         </nav>
 

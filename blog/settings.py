@@ -42,9 +42,11 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'django_cleanup',
+
+    'ckeditor',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE= [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,9 +129,20 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
 
-#STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles/')
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles/')
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 CRISPY_TEMPLATE_PACK='bootstrap3'
+
+CKEDITOR_JQUERY_URL=os.path.join(STATIC_URL,'js/jquery.min.js')
+
+CKEDITOR_CONFIGS = {
+    'default': {
+     #   'toolbar': 'full',
+     #   'height': 300,
+        'width': '100%',
+    },
+}
+

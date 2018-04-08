@@ -15,19 +15,23 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from home.views import home_view
+from home.views import home_view,about_view
 from django.conf.urls.static import static
 from django.conf import settings
+from post.views import post_index
+
 #viewler kullaniciya servis edilir ve bunlarin servis edilmesi icin url ler gerekir.
 #sitemin anasayfasina da url tanimlamaliyim yoksa default olarak gelen django sayfasinda kalir.
 #viewleri views.py de tanimlayip burada isleyecegim
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',home_view,name='home'),
-
+    url(r'^$',post_index,name='home'),
+    url(r'^about/',about_view,name='about'),
     #neden burda post tanimlarken $ koymadik? posttan sonra bitirirdi url i cunku
-    url(r'^post/',include('post.urls')),
+
+
+    url(r'^',include('post.urls')),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
